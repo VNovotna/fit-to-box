@@ -40,7 +40,8 @@ class PackagingApi
         // also it shoud by done by product dimensions and not id
         $responses = array_map(fn($product) => $product->getResponses(), $request->getProducts());
         var_dump($responses);
-        var_dump(array_intersect(...$responses));
+        //var_dump(array_intersect(...$responses));
+        return [];
 
     }
 
