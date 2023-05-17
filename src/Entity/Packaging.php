@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Packaging
+class Packaging implements \JsonSerializable
 {
 
     #[ORM\Id]
@@ -34,4 +34,22 @@ class Packaging
         $this->maxWeight = $maxWeight;
     }
 
+    public function serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'w' => $this->width,
+            'h' => $this->height,
+            'd' => $this->length,
+            'max_wg' => $this->maxWeight,
+        ];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            // ...
+        ];
+    }
 }
